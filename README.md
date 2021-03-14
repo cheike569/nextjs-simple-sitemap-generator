@@ -1,6 +1,8 @@
 # nextjs-simple-sitemap-generator
 
-A simple and easy sitemap generator for NextJS Projects. By Christoph Heike (Webzeile GmbH, www.webzeile.com)
+A simple and easy sitemap generator for NextJS Projects.
+
+Author: Christoph Heike (Webzeile GmbH, www.webzeile.com)
 
 ## Installation
 
