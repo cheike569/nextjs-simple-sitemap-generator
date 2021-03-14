@@ -134,6 +134,10 @@ class SitemapGenerator {
                 return;
             }
 
+            if(trimmedFilename === "index") {
+                trimmedFilename = "";
+            }
+
             if(this.options.locales && this.options.locales.length > 0) {
                 this.options.locales.forEach(locale => {
                     xmlContent += `<url>
