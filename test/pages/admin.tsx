@@ -1,0 +1,5 @@
+// @sitemapExcluded
+
+export default () => {
+    return "";
+}
