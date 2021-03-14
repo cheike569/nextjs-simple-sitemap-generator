@@ -14,6 +14,6 @@ declare class SitemapGenerator {
     isExcluded(file: string): boolean;
     pageOptions(path: string): PageProps;
     generatePages(): string;
-    generate(): void;
+    generate(): Promise<void>;
 }
 export default SitemapGenerator;
