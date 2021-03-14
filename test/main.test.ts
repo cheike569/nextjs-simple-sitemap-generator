@@ -34,8 +34,8 @@ describe('Generate function exists', () => {
         expect(content.match(/_document/)).to.be.null;
         expect(content.match(/404/)).to.be.null;
 
-        expect(content.indexOf("https://www.example.org/home")).not.to.equal(-1)
-        expect(content.indexOf("https://www.example.org/blog")).not.to.equal(-1)
+        expect(content.indexOf("https://www.example.org/de/home")).not.to.equal(-1)
+        expect(content.indexOf("https://www.example.org/en/blog")).not.to.equal(-1)
     });
 });
 
