@@ -146,7 +146,7 @@ class SitemapGenerator {
         return xmlContent;
     }
 
-    generate() {
+    async generate() {
         this.dirExists(this.options.pagesDirectory);
 
         const exportFile = `${this.options.exportDirectory}/${this.options.exportFilename}`
@@ -159,7 +159,7 @@ class SitemapGenerator {
         exportContent += this.generatePages();
 
         if (typeof this.options.beforeFinishCallback == "function") {
-            exportContent += this.options.beforeFinishCallback();
+            exportContent += await this.options.beforeFinishCallback();
         }
 
         exportContent += '</urlset>';

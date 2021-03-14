@@ -16,7 +16,7 @@ You can theoretically use the sitemap generator at any given place of your appli
         exportDirectory: './public',
         baseUrl: 'https://www.example.org',
         exportFilename: 'sitemap.xml',
-        beforeFinishCallback: function() {
+        beforeFinishCallback: async function() {
             // Whatever string you return will be inserted before
             // </urlset> closing tag in your sitemap
             return `<url>
