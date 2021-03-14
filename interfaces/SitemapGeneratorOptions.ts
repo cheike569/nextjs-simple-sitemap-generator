@@ -4,7 +4,8 @@ export interface SitemapGeneratorOptions {
     baseUrl?: string,
     exportFilename?: string,
     changeFreq?: string,
-    sitemapPriority?: string
+    sitemapPriority?: string,
+    locales?: Array<string>,
 
     isSiteExcludedCallback?: Function
     beforeFinishCallback?: Function

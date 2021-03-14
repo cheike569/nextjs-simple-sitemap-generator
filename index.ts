@@ -134,12 +134,23 @@ class SitemapGenerator {
                 return;
             }
 
-            xmlContent += `<url>
+            if(this.options.locales && this.options.locales.length > 0) {
+                this.options.locales.forEach(locale => {
+                    xmlContent += `<url>
+  <loc>${this.options.baseUrl}/${locale}/${trimmedFilename}</loc>
+  <lastmod>${currentDate}</lastmod>
+  <changefreq>${(pageOptions.changeFreq ? pageOptions.changeFreq : this.options.changeFreq)}</changefreq>
+  <priority>${(pageOptions.sitemapPriority ? pageOptions.sitemapPriority : this.options.sitemapPriority)}</priority>
+ </url>`;
+                })
+            } else {
+                xmlContent += `<url>
   <loc>${this.options.baseUrl}/${trimmedFilename}</loc>
   <lastmod>${currentDate}</lastmod>
   <changefreq>${(pageOptions.changeFreq ? pageOptions.changeFreq : this.options.changeFreq)}</changefreq>
   <priority>${(pageOptions.sitemapPriority ? pageOptions.sitemapPriority : this.options.sitemapPriority)}</priority>
  </url>`;
+            }
 
         });
 

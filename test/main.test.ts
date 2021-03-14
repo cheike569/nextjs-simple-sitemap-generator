@@ -10,7 +10,8 @@ const testOptions: SitemapGeneratorOptions = {
     pagesDirectory: './test/pages',
     exportDirectory: './test/export',
     baseUrl: 'https://www.example.org',
-    exportFilename: 'sitemap.xml'
+    exportFilename: 'sitemap.xml',
+    locales: ['de', 'en']
 }
 
 const testInstance = new SitemapGenerator(testOptions);

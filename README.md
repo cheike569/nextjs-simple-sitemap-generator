@@ -18,6 +18,7 @@ You can theoretically use the sitemap generator at any given place of your appli
         exportDirectory: './public',
         baseUrl: 'https://www.example.org',
         exportFilename: 'sitemap.xml',
+        locales: ['de', 'en'],
         beforeFinishCallback: async function() {
             // Whatever string you return will be inserted before
             // </urlset> closing tag in your sitemap
@@ -50,6 +51,7 @@ Then run it
         exportFilename?: string,
         changeFreq?: string,
         sitemapPriority?: string
+        locales?: Array<string> // handle multiple locales in your sitemap
 
         isSiteExcludedCallback?: Function // Determine if a site should be excluded function(fileName): boolean
         beforeFinishCallback?: Function // Whatever string you return will be inserted before </urlset> closing tag in your sitemap
