@@ -1,6 +1,6 @@
 # nextjs-simple-sitemap-generator
 
-A simple but working sitemap generator for NextJS Projects.
+A simple and easy sitemap generator for NextJS Projects. By Christoph Heike (Webzeile GmbH, www.webzeile.com)
 
 ## Installation
 
@@ -8,14 +8,24 @@ A simple but working sitemap generator for NextJS Projects.
 
 ## Usage
 
-You can theoretically use the sitemap generator at any given place of your application. I reccomend you create a `sitemap.js` file in your root directory, that you execute while building your application.
+You can theoretically use the sitemap generator at any given place of your application. It's recommend that you create a `sitemap.js` file in your root directory, that you execute while building your application.
 
     // sitemap.js
     const sitemapOptions: SitemapGeneratorOptions = {
-        pagesDirectory: './test/pages',
-        exportDirectory: './test/export',
+        pagesDirectory: './pages',
+        exportDirectory: './public',
         baseUrl: 'https://www.example.org',
-        exportFilename: 'sitemap.xml'
+        exportFilename: 'sitemap.xml',
+        beforeFinishCallback: function() {
+            // Whatever string you return will be inserted before
+            // </urlset> closing tag in your sitemap
+            return `<url>
+                    <loc>https://www.example.org/blog</loc>
+                    <lastmod>2021-3-14</lastmod>
+                    <changefreq>weekly</changefreq>
+                    <priority>1.0</priority>
+                </url>`
+        }
     }
 
     const sitemapGenerator = new SitemapGenerator(testOptions);
@@ -25,8 +35,9 @@ You can theoretically use the sitemap generator at any given place of your appli
     
     console.log("🎉 Sitemap generated!")
 
+Then run it
 
-
+    node sitemap
 
 ## Options
 
@@ -38,8 +49,8 @@ You can theoretically use the sitemap generator at any given place of your appli
         changeFreq?: string,
         sitemapPriority?: string
 
-        isSiteExcludedCallback?: Function
-        beforeFinishCallback?: Function
+        isSiteExcludedCallback?: Function // Determine if a site should be excluded function(fileName): boolean
+        beforeFinishCallback?: Function // Whatever string you return will be inserted before </urlset> closing tag in your sitemap
     }
 
 Default Options:
