@@ -106,12 +106,13 @@ class SitemapGenerator {
 
         let xmlContent = ``;
 
-        const dateObj = new Date();
-        const month = dateObj.getUTCMonth() + 1;
-        const day = dateObj.getUTCDate();
-        const year = dateObj.getUTCFullYear();
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const yyyy = today.getFullYear();
 
-        const currentDate = `${year}-${month}-${day}`;
+        const currentDate = yyyy + '-' + mm + '-' + dd;
+
 
         files.forEach((file: string) => {
             const fullPath = `${this.options.pagesDirectory}/${file}`;
