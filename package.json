@@ -2,6 +2,7 @@
   "name": "nextjs-simple-sitemap-generator",
   "version": "1.0.6",
   "description": "Simple but highly customizable sitemap generator for NextJS.",
+  "homepage": "https://github.com/cheike569/nextjs-simple-sitemap-generator",
   "main": "lib/index.js",
   "scripts": {
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/main.test.ts'",
@@ -10,6 +11,7 @@
   "types": "lib/index.d.ts",
   "keywords": [],
   "author": "Christoph Heike",
+  "url" : "https://www.webzeile.com/",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.15",
