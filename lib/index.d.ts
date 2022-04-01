@@ -13,7 +13,7 @@ declare class SitemapGenerator {
     ensureWriteDirectoryExists(dir: string): true | undefined;
     isExcluded(file: string): boolean;
     pageOptions(path: string): PageProps;
-    generatePages(): string;
+    generatePages(subdir?: string): string;
     generate(): Promise<void>;
 }
 export default SitemapGenerator;

@@ -1,6 +1,6 @@
 {
   "name": "nextjs-simple-sitemap-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple but highly customizable sitemap generator for NextJS.",
   "homepage": "https://github.com/cheike569/nextjs-simple-sitemap-generator",
   "main": "lib/index.js",

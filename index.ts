@@ -101,9 +101,16 @@ class SitemapGenerator {
         return pageProps;
     }
 
-    generatePages() {
-        const files = fs.readdirSync(this.options.pagesDirectory);
+    generatePages(subdir ?: string) {
+        let files, workdir: string;
 
+        if (subdir) {
+            files = fs.readdirSync(subdir);
+            workdir = subdir;
+        } else {
+            files = fs.readdirSync(this.options.pagesDirectory);
+            workdir = this.options.pagesDirectory;
+        }
         let xmlContent = ``;
 
         const today = new Date();
@@ -113,9 +120,13 @@ class SitemapGenerator {
 
         const currentDate = yyyy + '-' + mm + '-' + dd;
 
-
         files.forEach((file: string) => {
-            const fullPath = `${this.options.pagesDirectory}/${file}`;
+            const fullPath = `${workdir}/${file}`;
+
+            if (fs.lstatSync(fullPath).isDirectory()) {
+                xmlContent += this.generatePages(fullPath);
+                return;
+            }
 
             if (this.isExcluded(file)) {
                 return;
@@ -135,14 +146,19 @@ class SitemapGenerator {
                 return;
             }
 
-            if(trimmedFilename === "index") {
+            if (trimmedFilename === "index") {
                 trimmedFilename = "";
             }
 
-            if(this.options.locales && this.options.locales.length > 0) {
+            let prefix = '/';
+            if (subdir && subdir != this.options.pagesDirectory) {
+                prefix = subdir.replace(this.options.pagesDirectory, '') + '/'
+            }
+
+            if (this.options.locales && this.options.locales.length > 0) {
                 this.options.locales.forEach(locale => {
                     xmlContent += `<url>
-  <loc>${this.options.baseUrl}/${locale}/${trimmedFilename}</loc>
+  <loc>${this.options.baseUrl}/${locale}${prefix}${trimmedFilename}</loc>
   <lastmod>${currentDate}</lastmod>
   <changefreq>${(pageOptions.changeFreq ? pageOptions.changeFreq : this.options.changeFreq)}</changefreq>
   <priority>${(pageOptions.sitemapPriority ? pageOptions.sitemapPriority : this.options.sitemapPriority)}</priority>

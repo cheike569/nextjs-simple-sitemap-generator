@@ -2,7 +2,7 @@
 
 A simple and easy sitemap generator for NextJS Projects.
 
-Author: Christoph Heike (Webzeile GmbH, www.webzeile.com)
+Author: Christoph Heike (www.pacificcodeline.com)
 
 ## Installation
 
