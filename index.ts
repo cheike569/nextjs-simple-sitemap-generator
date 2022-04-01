@@ -59,7 +59,8 @@ class SitemapGenerator {
             file.indexOf("403") !== -1 ||
             file.indexOf("404") !== -1 ||
             file.indexOf("500") !== -1 ||
-            file.indexOf("503") !== -1
+            file.indexOf("503") !== -1 ||
+            file.indexOf("[...") !== -1
         ) {
             return true;
 
